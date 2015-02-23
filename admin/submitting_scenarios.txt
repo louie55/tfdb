@@ -1,0 +1,94 @@
+SUBMITTING WITH AN UPLOADED IMAGE
+------------------------------------------------------
+Array
+(
+    [name] => Ultra Magnus
+    [user] => 1
+    [series] => 1
+    [faction] => 1
+    [list] => 1
+    [tfl_link] => http://www.transformerland.com/wiki/toy-info/transformers-g1-other-ultra-magnus/1039/
+    [comments] => AWESOME!!
+    [image_url] => 
+)
+
+
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Ultra_Magnus_G1_01.jpg
+            [type] => image/jpeg
+            [tmp_name] => /tmp/php5RJyzm
+            [error] => 0
+            [size] => 866794
+        )
+
+)
+
+
+
+
+
+SUBMITTING WITH AN IMAGE URL
+---------------------------------------------------------
+
+Array
+(
+    [name] => Ultra Magnus
+    [user] => 1
+    [series] => 1
+    [faction] => 1
+    [list] => 1
+    [tfl_link] => http://www.transformerland.com/wiki/toy-info/transformers-g1-other-ultra-magnus/1039/
+    [comments] => AWESOME!!
+    [image_url] => http://www.tfw2005.com/resources/attach/1/transformers-g1-0296_1191471413.jpg
+)
+
+
+
+Array
+(
+    [image] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+        )
+
+)
+
+
+
+SUBMITTING WITH NO IMAGE
+----------------------------------------------------------
+
+Array
+(
+    [name] => Ultra Magnus
+    [user] => 1
+    [series] => 1
+    [faction] => 1
+    [list] => 1
+    [tfl_link] => http://www.tfw2005.com/resources/attach/1/transformers-g1-0296_1191471413.jpg
+    [comments] => AWESOME!!
+    [image_url] => 
+)
+
+
+
+Array
+(
+    [image] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+        )
+
+)

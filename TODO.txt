@@ -1,0 +1,6 @@
+-Favicon
+-Limit # of updates on home page
+-Old Updates page
+-Counts of different categories
+-Ajax disabling of categories based on current selections
+-Accordion contents only loaded on expand

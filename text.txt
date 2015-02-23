@@ -1,0 +1,159 @@
+SUBMITTING WITH 1 FILE:
+
+OLD:
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Buzzsaw_G1_04.jpg
+            [type] => image/jpeg
+            [tmp_name] => /tmp/phpKbDBlh
+            [error] => 0
+            [size] => 686456
+        )
+
+)
+
+
+-------
+NEW:
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Array
+                (
+                    [0] => DSC02585.JPG
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => /tmp/phpQWpaw3
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 214366
+                )
+
+        )
+
+)
+
+
+
+-------------------------------------------------------------------------
+
+Submitting with no files:
+
+OLD:
+
+Array
+(
+    [image] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+        )
+
+)
+
+------
+NEW:
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 
+                )
+
+            [type] => Array
+                (
+                    [0] => 
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => 
+                )
+
+            [error] => Array
+                (
+                    [0] => 4
+                )
+
+            [size] => Array
+                (
+                    [0] => 0
+                )
+
+        )
+
+)
+
+
+
+----------------------------------------------------------------------------
+
+Submitting with 3 files:
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Array
+                (
+                    [0] => DSC02667.JPG
+                    [1] => DSC02668.JPG
+                    [2] => DSC02669.JPG
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                    [1] => image/jpeg
+                    [2] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => /tmp/phpPCsN6m
+                    [1] => /tmp/phpyYee01
+                    [2] => /tmp/phpHNVLTG
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                    [2] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 194865
+                    [1] => 196212
+                    [2] => 147468
+                )
+
+        )
+
+)
