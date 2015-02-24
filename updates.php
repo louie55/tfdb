@@ -7,9 +7,9 @@
 
 
 if(isset($_GET["add"]) || isset($_GET["edit"])){
-	require($_SERVER["DOCUMENT_ROOT"]."/database/common/connect_db.php");
+	require("common/connect_db.php");
 		
-	require($_SERVER["DOCUMENT_ROOT"]."/database/common/functions.php");
+	require("common/functions.php");
 }
 
 
@@ -54,7 +54,7 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 								if($who != 1){ //If Louis didn't post an update
 									$to      = 'lchanady@gmail.com';
 									$subject = 'Cindy Posted an Update!';
-									$message = "Cindy has a new update!\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com/database/";
+									$message = "Cindy has a new update!\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com";
 									$headers = 'From: Vector Sigma <vector_sigma@cybertrons-core.com>' . "\r\n" .
 									    	    'X-Mailer: PHP/' . phpversion();
 									
@@ -66,7 +66,7 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 								if($who != 2){ //If Cindy didn't post an update
 									$to      = 'cynthiachanady5@gmail.com';
 									$subject = 'Louis Posted an Update!';
-									$message = "Louis has a new update!\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com/database/";
+									$message = "Louis has a new update!\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com";
 									$headers = 'From: Vector Sigma <vector_sigma@cybertrons-core.com>' . "\r\n" .
 									    	    'X-Mailer: PHP/' . phpversion();
 									

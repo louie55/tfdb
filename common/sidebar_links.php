@@ -1,9 +1,9 @@
 					<span class="bold">QUICK LINKS</span>
 					<br><br>				
-					<a href="/database/view_bots.php?user=1&list=1">Louis's Collection</a><br>
-					<a href="/database/view_bots.php?user=2&list=1">Cindy's Collection</a><br>
-					<a href="/database/view_bots.php?user=1&list=2">Louis's Wishlist</a><br>
-					<a href="/database/view_bots.php?user=2&list=2">Cindy's Wishlist</a><br>
+					<a href="view_bots.php?user=1&list=1">Louis's Collection</a><br>
+					<a href="view_bots.php?user=2&list=1">Cindy's Collection</a><br>
+					<a href="view_bots.php?user=1&list=2">Louis's Wishlist</a><br>
+					<a href="view_bots.php?user=2&list=2">Cindy's Wishlist</a><br>
 					<br><br><br><br><br><br><br><br>
 					<span class="bold">GREAT TRANSFORMER LINKS</span>
 					<br><br>				

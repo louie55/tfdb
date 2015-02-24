@@ -1,17 +1,17 @@
-	<?php require($_SERVER["DOCUMENT_ROOT"]."/database/common/connect_db.php"); ?>
+	<?php require("common/connect_db.php"); ?>
 	
-	<?php require($_SERVER["DOCUMENT_ROOT"]."/database/common/functions.php"); ?>
+	<?php require("common/functions.php"); ?>
 	
-	<link href="/database/style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" type="text/css" rel="stylesheet" />
-	<link href="/database/jquery-ui.css" type="text/css" rel="stylesheet" />
-	<link href="/database/jquery-ui.structure.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" type="text/css" rel="stylesheet" />
-	<link href="/database/jquery-ui.theme.css" type="text/css" rel="stylesheet" />
+	<link href="style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" type="text/css" rel="stylesheet" />
+	<link href="jquery-ui.css" type="text/css" rel="stylesheet" />
+	<link href="jquery-ui.structure.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" type="text/css" rel="stylesheet" />
+	<link href="jquery-ui.theme.css" type="text/css" rel="stylesheet" />
 	
-	<script src="/database/jquery-1.11.1.min.js"></script>
+	<script src="jquery-1.11.1.min.js"></script>
 	
-	<script src="/database/jquery.clickout.js"></script>
+	<script src="jquery.clickout.js"></script>
 	
-	<script src="/database/jquery-ui.js"></script>
+	<script src="jquery-ui.js"></script>
 	
 	<script>
 		//Convert all "title" text into fancy tooltips

@@ -5,9 +5,9 @@
 
 
 if(isset($_GET["id"])){
-	require($_SERVER["DOCUMENT_ROOT"]."/database/common/connect_db.php");
+	require("common/connect_db.php");
 		
-	require($_SERVER["DOCUMENT_ROOT"]."/database/common/functions.php");
+	require("common/functions.php");
 }
 
 

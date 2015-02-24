@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
 <head>
-	<title><?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/page_title.php"); ?></title>
+	<title><?php include("common/page_title.php"); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/includes.php"); ?>
+	<?php include("common/includes.php"); ?>
 	
 	<script>
 		//Preload Loading Screen Image
@@ -26,13 +26,13 @@
 		
 			<div id="header_image"> <!--Contains Header Image-->
 		
-				<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/header_image.php"); ?>
+				<?php include("common/header_image.php"); ?>
 		
 			</div>
 			
 			<div id="navbar"> <!--Contains Navigation Bar-->
 		
-				<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/navbuttons.php"); ?>
+				<?php include("common/navbuttons.php"); ?>
 		
 			</div>
 				
@@ -45,7 +45,7 @@
 				
 				<div class="sidebar_links"> <!--Contains Sidebar-->
 					
-					<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/sidebar_links.php"); ?>
+					<?php include("common/sidebar_links.php"); ?>
 					
 				</div>
 			
@@ -156,7 +156,7 @@
 								      }
 								    }
 								};
-	    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/database/updates.php?add=1&r=" +  Math.random());
+	    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/updates.php?add=1&r=" +  Math.random());
 	    						httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	    						httpRequest.send("who="+who+"&update="+text);
 						}
@@ -214,7 +214,7 @@
 											      }
 											    }
 											};
-				    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/database/updates.php?edit=1&id="+id+"&r=" +  Math.random());
+				    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/updates.php?edit=1&id="+id+"&r=" +  Math.random());
 				    						httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 				    						httpRequest.send("id="+id+"&update="+newText);
 										});
@@ -224,7 +224,7 @@
 								      }
 								    }
 								};
-	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.com/database/get_update.php?id="+id+"&r=" +  Math.random());
+	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.comget_update.php?id="+id+"&r=" +  Math.random());
 	    						httpRequest2.send();	
 							
 						}
@@ -408,6 +408,6 @@
 	</div>
 	
 	<div id="choose_emoticon_background">$nbsp;</div>
-<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/footer.php"); ?>
+<?php include("common/footer.php"); ?>
 </body>
 </html>

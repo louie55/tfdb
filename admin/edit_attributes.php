@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <head>
-	<title><?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/page_title.php"); ?></title>
+	<title><?php include("common/page_title.php"); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
-	<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/includes.php"); ?>
+	<?php include("common/includes.php"); ?>
 	
 	
 	
@@ -34,13 +34,13 @@
 		
 			<div id="header_image"> <!--Contains Header Image-->
 		
-				<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/header_image.php"); ?>
+				<?php include("common/header_image.php"); ?>
 		
 			</div>
 			
 			<div id="navbar"> <!--Contains Navigation Bar-->
 		
-				<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/navbuttons.php"); ?>
+				<?php include("common/navbuttons.php"); ?>
 		
 			</div>
 				
@@ -53,7 +53,7 @@
 				
 				<div class="sidebar_links"> <!--Contains Sidebar-->
 					
-					<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/sidebar_links.php"); ?>
+					<?php include("common/sidebar_links.php"); ?>
 					
 				</div>
 			
@@ -324,7 +324,7 @@
 								      }
 								    }
 								};
-	    						httpRequest.open('GET', "http://robotsindisguise.grintfarmsupply.com/database/admin/process_attribute.php?list=<?php echo $_GET["list"]; ?>&data="+content+"&id="+id+"&r=" +  Math.random());
+	    						httpRequest.open('GET', "http://robotsindisguise.grintfarmsupply.com/admin/process_attribute.php?list=<?php echo $_GET["list"]; ?>&data="+content+"&id="+id+"&r=" +  Math.random());
 	    						httpRequest.send();
 								
 								
@@ -363,6 +363,6 @@
 		</div>
 		
 	</div>
-<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/footer.php"); ?>
+<?php include("common/footer.php"); ?>
 </body>
 </html>

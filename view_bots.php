@@ -12,9 +12,9 @@ session_start();
   	
   	
   	
-	<title><?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/page_title.php"); ?></title>
+	<title><?php include("common/page_title.php"); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/includes.php"); ?>
+	<?php include("common/includes.php"); ?>
 	
 	<!--Get Page Progress Bar Script-->
 	<script src="waitImages.js"></script>
@@ -126,13 +126,13 @@ session_start();
 		
 			<div id="header_image"> <!--Contains Header Image-->
 		
-				<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/header_image.php"); ?>
+				<?php include("common/header_image.php"); ?>
 		
 			</div>
 			
 			<div id="navbar"> <!--Contains Navigation Bar-->
 		
-				<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/navbuttons.php"); ?>
+				<?php include("common/navbuttons.php"); ?>
 		
 			</div>
 				
@@ -145,7 +145,7 @@ session_start();
 				
 				<div class="sidebar_links"> <!--Contains Sidebar-->
 					
-					<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/sidebar_links.php"); ?>
+					<?php include("common/sidebar_links.php"); ?>
 					
 				</div>
 			
@@ -320,7 +320,7 @@ session_start();
 										<h3 style="color:red">Currently Displaying a Single Bot</h3>
 										
 										To get the direct link, either copy the address of this page in your browser or copy this URL:<br>
-										<span class="bold">http://robotsindisguise.grintfarmsupply.com/database/view_bots.php?bot=<?php echo $_GET["bot"]; ?></span><br><br>
+										<span class="bold">http://robotsindisguise.grintfarmsupply.comview_bots.php?bot=<?php echo $_GET["bot"]; ?></span><br><br>
 										<?php
 										
 									}
@@ -1048,7 +1048,7 @@ session_start();
 								      }
 								    }
 								};
-	    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/database/comments.php?add=1&id="+id+"&r=" +  Math.random());
+	    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/comments.php?add=1&id="+id+"&r=" +  Math.random());
 	    						httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	    						httpRequest.send("who="+who+"&comment="+text);
 						}
@@ -1106,7 +1106,7 @@ session_start();
 											      }
 											    }
 											};
-				    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/database/comments.php?edit=1&id="+bot+"&r=" +  Math.random());
+				    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/comments.php?edit=1&id="+bot+"&r=" +  Math.random());
 				    						httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 				    						httpRequest.send("id="+id+"&comment="+newText);
 										});
@@ -1116,7 +1116,7 @@ session_start();
 								      }
 								    }
 								};
-	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.com/database/get_comment.php?id="+id+"&r=" +  Math.random());
+	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.comget_comment.php?id="+id+"&r=" +  Math.random());
 	    						httpRequest2.send();	
 							
 						}
@@ -1276,7 +1276,7 @@ session_start();
 	
 	
 	
-<?php include($_SERVER["DOCUMENT_ROOT"]."/database/common/footer.php"); ?>
+<?php include("common/footer.php"); ?>
 
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
 //CONNECT TO THE DATABASE
 
-require_once $_SERVER["DOCUMENT_ROOT"]."/database/ez_sql_core.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/database/ez_sql_pdo.php";
+require_once "ez_sql_core.php";
+require_once "ez_sql_pdo.php";
 
 //CHANGE BELOW LINE IF MYSQL DATABASE LOGIN INFO CHANGES.
 

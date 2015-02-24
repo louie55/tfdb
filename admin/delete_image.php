@@ -4,9 +4,9 @@
 //THIS IS MY FIRST EVER ATTEMPT AT USING AJAX REQUESTS!!!
 
 
-require($_SERVER["DOCUMENT_ROOT"]."/database/common/connect_db.php");
+require("common/connect_db.php");
 	
-require($_SERVER["DOCUMENT_ROOT"]."/database/common/functions.php");
+require("common/functions.php");
 
 
 								$imageArr = unserialize( $db->get_var("SELECT image FROM tfdb_bots WHERE id = ".$_GET['id']) );

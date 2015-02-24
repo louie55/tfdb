@@ -1,1 +1,1 @@
-				<img src="/database/images/main/Transformers_Website_Header.png?r=4">
+				<img src="images/main/Transformers_Website_Header.png?r=4">
