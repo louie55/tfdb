@@ -224,7 +224,7 @@
 								      }
 								    }
 								};
-	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.comget_update.php?id="+id+"&r=" +  Math.random());
+	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.com/get_update.php?id="+id+"&r=" +  Math.random());
 	    						httpRequest2.send();	
 							
 						}

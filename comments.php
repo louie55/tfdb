@@ -68,7 +68,7 @@ if(isset($_GET["id"])){
 								if($who != 1){ //If Louis didn't comment
 									$to      = 'lchanady@gmail.com';
 									$subject = 'Cindy Commented on ' .$botName. '!';
-									$message = "Cindy has left a comment on the following bot: ".$botName."\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.comview_bots.php?bot=".$id;
+									$message = "Cindy has left a comment on the following bot: ".$botName."\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com/view_bots.php?bot=".$id;
 									$headers = 'From: Vector Sigma <vector_sigma@cybertrons-core.com>' . "\r\n" .
 									    	    'X-Mailer: PHP/' . phpversion();
 									
@@ -80,7 +80,7 @@ if(isset($_GET["id"])){
 								if($who != 2){ //If Cindy didn't comment
 									$to      = 'cynthiachanady5@gmail.com';
 									$subject = 'Louis Commented on ' .$botName. '!';
-									$message = "Louis has left a comment on the following bot: ".$botName."\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.comview_bots.php?bot=".$id;
+									$message = "Louis has left a comment on the following bot: ".$botName."\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com/view_bots.php?bot=".$id;
 									$headers = 'From: Vector Sigma <vector_sigma@cybertrons-core.com>' . "\r\n" .
 									    	    'X-Mailer: PHP/' . phpversion();
 									

@@ -320,7 +320,7 @@ session_start();
 										<h3 style="color:red">Currently Displaying a Single Bot</h3>
 										
 										To get the direct link, either copy the address of this page in your browser or copy this URL:<br>
-										<span class="bold">http://robotsindisguise.grintfarmsupply.comview_bots.php?bot=<?php echo $_GET["bot"]; ?></span><br><br>
+										<span class="bold">http://robotsindisguise.grintfarmsupply.com/view_bots.php?bot=<?php echo $_GET["bot"]; ?></span><br><br>
 										<?php
 										
 									}
@@ -1116,7 +1116,7 @@ session_start();
 								      }
 								    }
 								};
-	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.comget_comment.php?id="+id+"&r=" +  Math.random());
+	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.com/get_comment.php?id="+id+"&r=" +  Math.random());
 	    						httpRequest2.send();	
 							
 						}
