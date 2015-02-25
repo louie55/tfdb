@@ -324,7 +324,7 @@
 								      }
 								    }
 								};
-	    						httpRequest.open('GET', "http://robotsindisguise.grintfarmsupply.com/admin/process_attribute.php?list=<?php echo $_GET["list"]; ?>&data="+content+"&id="+id+"&r=" +  Math.random());
+	    						httpRequest.open('GET', "/admin/process_attribute.php?list=<?php echo $_GET["list"]; ?>&data="+content+"&id="+id+"&r=" +  Math.random());
 	    						httpRequest.send();
 								
 								

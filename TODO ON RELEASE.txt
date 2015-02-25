@@ -1,0 +1,3 @@
+Once you actually release a version to the live server do these things:
+
+-Enable Emails to Cindy in comments.php and updates.php. These are commented out for test purposes.

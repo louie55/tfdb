@@ -156,7 +156,7 @@
 								      }
 								    }
 								};
-	    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/updates.php?add=1&r=" +  Math.random());
+	    						httpRequest.open('POST', "/updates.php?add=1&r=" +  Math.random());
 	    						httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	    						httpRequest.send("who="+who+"&update="+text);
 						}
@@ -214,7 +214,7 @@
 											      }
 											    }
 											};
-				    						httpRequest.open('POST', "http://robotsindisguise.grintfarmsupply.com/updates.php?edit=1&id="+id+"&r=" +  Math.random());
+				    						httpRequest.open('POST', "/updates.php?edit=1&id="+id+"&r=" +  Math.random());
 				    						httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 				    						httpRequest.send("id="+id+"&update="+newText);
 										});
@@ -224,7 +224,7 @@
 								      }
 								    }
 								};
-	    						httpRequest2.open('GET', "http://robotsindisguise.grintfarmsupply.com/get_update.php?id="+id+"&r=" +  Math.random());
+	    						httpRequest2.open('GET', "/get_update.php?id="+id+"&r=" +  Math.random());
 	    						httpRequest2.send();	
 							
 						}
@@ -306,6 +306,7 @@
 							
 						});
 						
+						/*
 						//Submit Bot Search
 						function searchBots(){
 							var text = $("#search").val();
@@ -332,7 +333,7 @@
 							});
 						}
 						
-						
+						*/
 						
 						<?php
 						if($firefox){ //Only show logo flipper if we are in Firefox since that's the only place it works :(

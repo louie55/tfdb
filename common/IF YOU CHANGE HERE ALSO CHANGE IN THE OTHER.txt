@@ -1,0 +1,1 @@
+These files exist in 2 places (regular and admin) so if you change something in the regular site area and you also want that change on the admin pages, then you must also change the copy in the admin area. And Vice-Versa.

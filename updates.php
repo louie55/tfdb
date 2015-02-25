@@ -23,7 +23,7 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 							//START ADDING SECTION------------------------------------------------------------
 							if(isset($_GET["add"])){
 																		
-								$text = htmlspecialchars($_POST["update"]);
+								$text = addslashes(htmlspecialchars($_POST["update"]));
 								$who = $_POST["who"];
 								
 								
@@ -64,13 +64,13 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 								//Send Cindy a Message if Louis Posts an Update
 								
 								if($who != 2){ //If Cindy didn't post an update
-									$to      = 'cynthiachanady5@gmail.com';
+									//$to      = 'cynthiachanady5@gmail.com';
 									$subject = 'Louis Posted an Update!';
 									$message = "Louis has a new update!\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com";
 									$headers = 'From: Vector Sigma <vector_sigma@cybertrons-core.com>' . "\r\n" .
 									    	    'X-Mailer: PHP/' . phpversion();
 									
-									mail($to, $subject, $message, $headers);
+									//mail($to, $subject, $message, $headers);
 								}
 
 								
@@ -82,7 +82,7 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 							//START EDITING SECTION------------------------------------------------------------							
 							if(isset($_GET["edit"])){
 							
-								$text = htmlspecialchars($_POST["update"]);
+								$text = addslashes(htmlspecialchars($_POST["update"]));
 								$updateID = $_POST["id"];
 								
 								
@@ -118,7 +118,7 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 										<td class="comment_<?php if($c % 2 != 0){echo "odd";} else{echo "even";} ?>">
 											<div class="comment_username"><?php echo getVar("tfdb_users", "name", $comment->who); ?></div>
 											<div class="comment_date"><?php echo date('l, M j, Y - g:i A',strtotime($comment->date)); ?></div>
-											<div class="comment_text" id="comment_<?php echo $comment->id; ?>"><?php echo insertEmoticons(str_replace(array("\n","\r"),"<br>",formatUrlsInText($comment->text))); ?></div>
+											<div class="comment_text" id="comment_<?php echo $comment->id; ?>"><?php echo insertEmoticons(str_replace(array("\n","\r"),"<br>",formatUrlsInText(stripslashes($comment->text)))); ?></div>
 											<img title="Edit This Update" src="images/edit_small.png" class="comment_edit_button" onclick="editUpdate(<?php echo $comment->id ?>);">
 										</td>
 									</tr>

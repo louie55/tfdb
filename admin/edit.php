@@ -258,7 +258,7 @@
 							httpRequest = new XMLHttpRequest();
 							
 							httpRequest.onreadystatechange = showImages;
-    						httpRequest.open('GET', "http://robotsindisguise.grintfarmsupply.com/admin/delete_image.php?id=<?php echo $_GET["id"]; ?>&r=" +  Math.random());
+    						httpRequest.open('GET', "/admin/delete_image.php?id=<?php echo $_GET["id"]; ?>&r=" +  Math.random());
     						httpRequest.send();
     						
     						//Hide the combiner drop-down box if this is a combiner
@@ -296,7 +296,7 @@
 									httpRequest = new XMLHttpRequest();
 							
 									httpRequest.onreadystatechange = deletedMessage;
-		    						httpRequest.open('GET', "http://robotsindisguise.grintfarmsupply.com/admin/delete_image.php?id=<?php echo $_GET["id"]; ?>&delete=" + imgName + "&r=" +  Math.random());
+		    						httpRequest.open('GET', "/admin/delete_image.php?id=<?php echo $_GET["id"]; ?>&delete=" + imgName + "&r=" +  Math.random());
 		    						httpRequest.send();
 		    						
 		    						$( this ).dialog( "close" );
@@ -354,7 +354,7 @@
 								$("#edit_images_container").html(httpRequest.responseText);
 								$("#edit_images_container").fadeIn(2000);
 							};
-		    				httpRequest.open('GET', "http://robotsindisguise.grintfarmsupply.com/admin/delete_image.php?id=<?php echo $_GET["id"]; ?>&main=" + img + "&r=" +  Math.random());
+		    				httpRequest.open('GET', "/admin/delete_image.php?id=<?php echo $_GET["id"]; ?>&main=" + img + "&r=" +  Math.random());
 		    				httpRequest.send();
 						}
 						
