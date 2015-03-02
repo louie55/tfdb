@@ -1,0 +1,7 @@
+# Begin password protection #
+AuthName "You are attempting to access the Cybertron Hall of Records! Authorized users only! Tresspassers will be fed to the scraplets."
+Require valid-user
+AuthUserFile "/home/users/web/b2674/ipw.grintfar/public_html/tf/admin/.htpasswd"
+AuthType basic
+# End password protection #
+
