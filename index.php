@@ -91,7 +91,7 @@
 					</div>
 					<br><br>
 					<h1>Updates</h1>
-					<span class="smallText">These are the latest updates that have been made.<br>To create a new update, use the form below the updates.</span><br>
+					<span class="smallText">These are the last 5 updates that have been made.<br>To create a new update, use the form below.</span><br>
 					<br>
 					<div class="comment_container"> <!--HOLDS ALL THE UPDATES-->
 						<?php include("updates.php"); ?>

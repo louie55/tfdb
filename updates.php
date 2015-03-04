@@ -95,11 +95,28 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 							
 							//START DISPLAYING SECTION----------------------------------------------------------
 							
+							//Display Add Comment Form
 							
+							//If the user session variable exists, it means this user has added a comment already
+							//in this session and we want to remember who they are so they don't have to choose their
+							//name every time they add a comment.
+							$userCommentSelected = isset($_COOKIE["user"]) ? $_COOKIE["user"] : 0;
+							
+							?>
+							<div class="comment_add_form">
+								<h3>Add an Update</h3>
+								Who Are You: <?php echo createDropdown("tfdb_users","name","user",$userCommentSelected); ?><br>
+								<textarea class="comment_add_textarea" id="update_text"></textarea><br>
+								<input type="button" value="Add Update" onclick="addUpdate()">
+								<img src="images/emoticon.png" title="Add Emoticons! (Or you can use text emoticons and they will be automatically converted :D )" id="emoticon_image_add" onclick="openEmoticons('','add');">
+							</div>
+							<br>
+							
+							<?php
 							
 							
 							//Display the Updates. The reason everything says "comments" below is because I reused the comment code for updates and didn't feel like changing it :P
-							$comments = $db->get_results("SELECT * FROM tfdb_updates ORDER BY id DESC");
+							$comments = $db->get_results("SELECT * FROM tfdb_updates ORDER BY id DESC LIMIT 5");
 							
 							if($db->num_rows < 1){ //Then we have no comments. Display message.
 								?>
@@ -132,21 +149,7 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 							
 							}
 							
-							//Display Add Comment Form
-							
-							//If the user session variable exists, it means this user has added a comment already
-							//in this session and we want to remember who they are so they don't have to choose their
-							//name every time they add a comment.
-							$userCommentSelected = isset($_COOKIE["user"]) ? $_COOKIE["user"] : 0;
-							
 							?>
-							<div class="comment_add_form">
-								<h3>Add an Update</h3>
-								Who Are You: <?php echo createDropdown("tfdb_users","name","user",$userCommentSelected); ?><br>
-								<textarea class="comment_add_textarea" id="update_text"></textarea><br>
-								<input type="button" value="Add Update" onclick="addUpdate()">
-								<img src="images/emoticon.png" title="Add Emoticons! (Or you can use text emoticons and they will be automatically converted :D )" id="emoticon_image_add" onclick="openEmoticons('','add');">
-							</div>
 						</div>
 							<?php
 							
