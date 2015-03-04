@@ -2,6 +2,7 @@
 	
 	<?php require("common/functions.php"); ?>
 	
+	<link rel="icon" href="/favicon.ico">
 	<link href="style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" type="text/css" rel="stylesheet" />
 	<link href="jquery-ui.css" type="text/css" rel="stylesheet" />
 	<link href="jquery-ui.structure.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" type="text/css" rel="stylesheet" />
