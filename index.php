@@ -229,6 +229,10 @@
 							
 						}
 						
+						function getMoreUpdates(){
+							
+						}
+						
 						//Some global variables for emoticons since they will be used in 2 different functions
 						var emotType = "";
 						var emotID = "";
