@@ -94,7 +94,9 @@
 					<span class="smallText">The last 5 updates are listed below.<br>To create a new update, use the form below.</span><br>
 					<br>
 					<div class="comment_container"> <!--HOLDS ALL THE UPDATES-->
-						<?php include("updates.php"); ?>
+						<div class="updates_holder">
+							<?php include("updates.php"); ?>
+						</div>
 					</div>
 					
 					<script type="text/javascript">
@@ -229,8 +231,11 @@
 							
 						}
 						
-						function getMoreUpdates(){
-							
+						//This function will display more updates if the user wishes to display them
+						function getMoreUpdates(c){
+							$.get( "updates.php", {count:c, r: Math.random()}).done(function( data ) {
+								$( ".updates_holder" ).html( data );
+							});
 						}
 						
 						//Some global variables for emoticons since they will be used in 2 different functions

@@ -6,7 +6,7 @@
 
 
 
-if(isset($_GET["add"]) || isset($_GET["edit"])){
+if(isset($_GET["add"]) || isset($_GET["edit"]) || isset($_GET["count"])){
 	require("common/connect_db.php");
 		
 	require("common/functions.php");
@@ -16,8 +16,7 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 							
 							
 							
-						//Start container DIV
-						echo "<div class=\"updates_holder\">\n";
+						
 							
 							
 							//START ADDING SECTION------------------------------------------------------------
@@ -114,9 +113,16 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 							
 							<?php
 							
+							//Control how many updates are shown
+							if(isset($_GET["count"])){
+								$shownCount = $_GET["count"];
+							}
+							else{
+								$shownCount = 5; //Show only 5 updates by default
+							}
 							
 							//Display the Updates. The reason everything says "comments" below is because I reused the comment code for updates and didn't feel like changing it :P
-							$comments = $db->get_results("SELECT * FROM tfdb_updates ORDER BY id DESC LIMIT 5");
+							$comments = $db->get_results("SELECT * FROM tfdb_updates ORDER BY id DESC LIMIT ".$shownCount);
 							
 							if($db->num_rows < 1){ //Then we have no comments. Display message.
 								?>
@@ -149,10 +155,27 @@ if(isset($_GET["add"]) || isset($_GET["edit"])){
 							
 							}
 							
-							?>
-						</div>
-							<?php
+							//Start code for displaying a link to show more updates
+							$updateCount = $db->get_var("SELECT COUNT(*) FROM tfdb_updates"); //Get how many updates are in the database
 							
-		
-								
-?>
+							$getCount = $updateCount - $shownCount - 5 >= 0 ? 5 : $updateCount - $shownCount;
+							
+							if($updateCount - $shownCount > 0){
+								?>
+								<div class="moreUpdates">
+									Currently Showing <?php echo $shownCount;?> out of <?php echo $updateCount;?> Updates<br>
+									<input type="button" value="Show <?php echo $getCount;?> More" id="showUpdatesButton" onclick="getMoreUpdates(<?php echo $shownCount + $getCount;?>)">
+								</div>
+								<?php
+							}
+							else{
+								?>
+								<div class="moreUpdates">
+									Currently Showing All Updates
+								</div>
+								<?php
+							}
+							?>
+							
+							
+						

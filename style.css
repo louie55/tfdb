@@ -802,6 +802,10 @@ td.bot_data_label {
 	font-size: 24px;
 }
 
- .ui-progressbar {
-position: relative;
+.ui-progressbar {
+	position: relative;
+}
+
+.moreUpdates {
+	line-height: 30px;
 }
