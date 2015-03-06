@@ -809,3 +809,14 @@ td.bot_data_label {
 .moreUpdates {
 	line-height: 30px;
 }
+
+.updateComment {
+	width: 90%;
+	border: 1px solid grey;
+	margin: 10px auto 0 auto;
+	background-color: rgba(245,245,245,.4);
+	padding: 10px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+

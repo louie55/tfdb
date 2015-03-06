@@ -143,6 +143,12 @@ if(isset($_GET["add"]) || isset($_GET["edit"]) || isset($_GET["count"])){
 											<div class="comment_date"><?php echo date('l, M j, Y - g:i A',strtotime($comment->date)); ?></div>
 											<div class="comment_text" id="comment_<?php echo $comment->id; ?>"><?php echo insertEmoticons(str_replace(array("\n","\r"),"<br>",formatUrlsInText(stripslashes($comment->text)))); ?></div>
 											<img title="Edit This Update" src="images/edit_small.png" class="comment_edit_button" onclick="editUpdate(<?php echo $comment->id ?>);">
+											<br>
+											<div class="updateComment">
+												Comments:
+												
+												<table></table>
+											</div>
 										</td>
 									</tr>
 									<?php

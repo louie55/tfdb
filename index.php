@@ -86,12 +86,12 @@
 					
 					<div id="home_text"<?php if(!$firefox){echo " style=\"margin-top:350px\"";} ?>>
 						This is the official Transformers Database for Louis and Cindy!! It is a place to catalog, organize, and display Transformers toys and other items
-						that they own or that the wish they owned. It can hold multiple lists for each person as well as allowing multiple images for each of those Transformers.
+						that they own or that they wish they owned. It can hold multiple lists for each person as well as allowing multiple images for each of those Transformers.
 						Use the links at the top of the page to get started.
 					</div>
 					<br><br>
 					<h1>Updates</h1>
-					<span class="smallText">The last 5 updates are listed below.<br>To create a new update, use the form below.</span><br>
+					<span class="smallText">To create a new update, use the form below.</span><br>
 					<br>
 					<div class="comment_container"> <!--HOLDS ALL THE UPDATES-->
 						<div class="updates_holder">
