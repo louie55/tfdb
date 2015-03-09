@@ -14,6 +14,10 @@
 		}
 		
 		$.preloadImages("images/loading_screen.gif");
+		
+		$( document ).ready(function() {
+			autosize($('.updateCommentAddText'));
+		});
 	</script>
 	
 	
@@ -182,7 +186,7 @@
 								        field.html("<textarea rows=\"4\" cols=\"45\" id=\"editing_"+id+"\">"+httpRequest2.responseText+"</textarea>");	
 								        
 								        //Insert Save Button and emoticon button
-										field.after("<input type='button' value='Save' id='save_edit'> <img src='images/emoticon.png' title='Add Emoticons! (Or you can use text emoticons and they will be automatically converted :D )' id='emoticon_image_add' onclick='openEmoticons(\""+id+"\",\"edit\");'>");
+										field.after("<input type='button' value='Save' id='save_edit'> <img src='images/emoticon.png' title='Add Emoticons! (Or you can use text emoticons and they will be automatically converted :D )' id='emoticon_image_add' onclick='openEmoticons(\"#editing_"+id+"\");'>");
 
 
 
@@ -232,24 +236,91 @@
 						}
 						
 						//This function will display more updates if the user wishes to display them
+						updateShowCount = 5;  //Create global variable so we can keep track of how many updates are displayed. Defaults to 5.
 						function getMoreUpdates(c){
 							$.get( "updates.php", {count:c, r: Math.random()}).done(function( data ) {
 								$( ".updates_holder" ).html( data );
 							});
+							
+							updateShowCount = c; //Update Global Variable
+						}
+						
+						//This function adds comments to updates
+						function addUpdateComment(i){
+							var commentText = $.trim($("#updateCommentTextBox" + i).val()); //Get comment text
+							
+							if(commentText == ""){
+								//Nothing was entered, so display error
+								alert("You didn't enter anything in the comment box! :(");
+								$("#updateCommentTextBox" + i).focus(); //Put cursor in the textbox
+								return; //Exit function without posting the comment
+							}
+							
+							var who = $("select[name='user_"+i+"']").val(); //Get who is leaving this comment
+							
+							if(who == 0){
+								//Nothing was entered, so display error
+								alert("You didn't choose who you are!");
+								$("select[name='user_"+i+"']").focus(); //Put cursor in the textbox
+								return; //Exit function without posting the comment
+							}
+							
+							
+							//Post the data to updates.php via AJAX
+							$.post( "updates.php", { comment: "add", text: commentText, id: i , updateCount: updateShowCount, user: who} ).done(function(data){
+								$( ".updates_holder" ).html( data );
+							});
+						}
+						
+						var editingComment = 0; //So more than one comment can't be edited at a time
+						
+						function editUpdateComment(i){ //"i" will be the ID of the comment that is being edited in the tfdb_comments table
+							//Make sure there is not another comment being edited
+							if(editingComment == 1){
+								return;
+							}
+							
+							editingComment = 1;
+							
+							
+							//First, get the comment text from the database
+							$.get("get_comment.php", {id: i}).done(function(data){
+								var commentText = data;
+								
+								//Now create a new textarea where the current comment is and populate it with the text retrieved from the database
+								$("#updateCommentDisplay" + i).html("<textarea style='width:400px;max-height:150px' id='editingThisComment'>"+ commentText +"</textarea><br><input type='button' value='Save' id='commentSaveButton'><img src=\"images/emoticon.png\" title=\"Add Emoticons! (Or you can use text emoticons and they will be automatically converted :D )\" id=\"emoticon_image_add_update_comments\" onclick=\"openEmoticons('#editingThisComment')\">");
+								
+								//Ok, now that we have the text ready to edit, we need to bind the Save button to a function that will save
+								//the comment and re-fetch the updates from the server
+								$("#commentSaveButton").on("click",function(){
+									//Get the current value of the textarea
+									var currentText = $("#editingThisComment").val();
+									//Now save the comment!
+									$.post("updates.php",{comment: "edit",id: i, updateCount: updateShowCount, text: currentText }).done(function(data){
+										$( ".updates_holder" ).html( data );
+										editingComment = 0; //Reset editing comment variable so another can be edited
+									});
+								});
+								
+								//Make the textarea autosizing
+								autosize($("#editingThisComment"));
+							});							
 						}
 						
 						//Some global variables for emoticons since they will be used in 2 different functions
 						var emotType = "";
 						var emotID = "";
+						var emotTextBox = "";
 						
 						//Opens the Emoticon Dialog
-						function openEmoticons(id,type){
+						function openEmoticons(textbox){
+							emotTextBox = textbox;
 							//Set where we are using the emoticons
-							emotType = type;
+							//emotType = type;
 							
 							//Set which ID this is. If emotType is "add" we will assume this ID is a BOT ID.
 							//If emotType is "edit" we will assume this ID is a COMMENT ID
-							emotID = id;
+							//emotID = id;
 							
 							//Show the translucent background
 							$("#choose_emoticon_background").fadeIn(500);
@@ -273,12 +344,22 @@
 							//code is the actual code that is inserted into the textbox
 							
 							//Now we perform different actions depending on whether we are adding or editing
+							/*
 							if(emotType == "add"){
-								$("#update_text").val($("#update_text").val() + code);
+								$("#update_text").insertAtCaret(code);
 							}
 							else{ //We must be editing
-								$("#editing_"+emotID).val($("#editing_"+emotID).val() + code);
+								$("#editing_"+emotID).insertAtCaret(code);
 							}
+							*/
+							
+							$(emotTextBox).insertAtCaret(code);
+							
+							//Resize text box if this is a comment
+							var ta = document.querySelector(emotTextBox);
+							var evt = document.createEvent('Event');
+							evt.initEvent('autosize.update', true, false);
+							ta.dispatchEvent(evt);
 						}
 						
 						//Shows or removes thumbnails in the list when the checkbox is changed

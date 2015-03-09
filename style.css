@@ -509,7 +509,7 @@ td.bot_data_label {
 }
 
 .comment_table {
-	width: 60%;
+	width: 562px;
 	margin: 15px auto;
 	border: 2px solid black;
 	border-radius: 10px;
@@ -518,7 +518,8 @@ td.bot_data_label {
 .comment_table td{
 	border: none;
 	padding: 5px 10px 20px 10px;
-	text-align: left
+	text-align: left;
+	position: relative;
 }
 
 .comment_odd {
@@ -811,7 +812,7 @@ td.bot_data_label {
 }
 
 .updateComment {
-	width: 90%;
+	width: 480px;
 	border: 1px solid grey;
 	margin: 10px auto 0 auto;
 	background-color: rgba(245,245,245,.4);
@@ -820,3 +821,91 @@ td.bot_data_label {
 	border-radius: 5px;
 }
 
+.updateCommentContainer {
+	margin-top: 20px;
+	width: 100%;
+	text-align: center;
+}
+
+.updateCommentAddText {
+	padding: 10px;
+	vertical-align: top;
+	width: 300px;
+	max-height: 150px;
+}
+
+textarea:focus {
+	outline-style: solid;
+	outline-width: 1px;
+}
+
+.addUpdateCommentButton {
+	border: 1px solid #404582;
+	width: 90px;
+	margin-left: 121px;
+	background-color: #EDEFFF;
+	color: #404582;
+	padding: 1px 0;
+	cursor: pointer;
+}
+
+.addUpdateCommentButton:hover {
+	background-color: #FFF;
+}
+
+.whoAreYouUpdateComment {
+	width: 400px;
+	text-align: left;
+	margin-left: 121px;
+}
+
+#emoticon_image_add_update_comments {
+	width: 17px;
+	height: 17px;
+	margin: 2px 0 0 120px;
+	cursor: pointer;
+}
+
+.updateComment table{
+	width: 450px;
+	border: 1px solid black;
+	margin: 20px auto;
+	border-radius: 5px;
+}
+
+.updateCommentTD {
+	padding: 10px;
+}
+
+.update_comment_even {
+	background-color: #FAFAFF;
+}
+
+.update_comment_odd {
+	background-color: #E6F1FF;
+}
+
+.updateCommentHeader {
+	font-weight: bold;
+	font-size: 14px;
+	color: #2B62AB;
+	margin-bottom: 5px;
+}
+
+.updatCommentDate {
+	font-size: 12px;
+	color: #829CBD
+}
+
+.updateCommentDisplay img { /* Emoticons */
+	width: 17px;
+	height: 17px;
+	vertical-align: middle;
+}
+
+.updateCommentEditButton {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	cursor: pointer;
+}

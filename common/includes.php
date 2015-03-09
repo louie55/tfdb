@@ -12,6 +12,8 @@
 	
 	<script src="jquery.clickout.js"></script>
 	
+	<script src="autosize.js"></script>
+	
 	<script src="jquery-ui.js"></script>
 	
 	<script>

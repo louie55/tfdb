@@ -60,7 +60,7 @@ if(isset($_GET["id"])){
 								
 								
 								//Insert into database
-								$db->query("INSERT INTO tfdb_comments (comment,bot,user,date) VALUES ('".$text."',".$id.",".$who.",'".date("Y-m-d H:i:s",time()-3600)."')");
+								$db->query("INSERT INTO tfdb_comments (type,comment,bot,user,date) VALUES ('bot','".$text."',".$id.",".$who.",'".date("Y-m-d H:i:s",time()-3600)."')");
 								
 								
 								//Send Louis a Message if Cindy comments
