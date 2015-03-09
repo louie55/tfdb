@@ -188,11 +188,9 @@ session_start();
 									
 									//Don't display filter section if only displaying single bot
 									
-									//TAKE OUT THE ADMIN PART AFTER COLLECTION REVEAL!
+									//
 									$louisCollection = 0;
-									if($_GET["user"] == 1 && $_GET["list"] == 1 && !isset($_GET["admin"])){
-										$louisCollection = 1;
-									}
+									
 									
 									if(!isset($_GET["bot"]) && !isset($_GET["search"]) && $louisCollection == 0){	
 										//Get filtered variables if the results are already filtered
@@ -414,10 +412,7 @@ session_start();
 								}
 								
 								
-								//Intercept if this is my collection and Admin isn't on so Cindy can't see my collection yet! :P
-								if($_GET["list"] == 1 && $_GET["user"] == 1 && !isset($_GET["admin"])){
-										$db->num_rows = 0;
-								}
+								
 								
 
 								
@@ -428,10 +423,6 @@ session_start();
 								if($db->num_rows < 1){ //There are no results, so just show a message
 									if(isset($_GET["search"])){
 										echo "There are no Transformers that match your search. Sorry!<br><br>Use the Back button to try again.";
-									}
-									//Message to hide my collection from Cindy for now. Delete when Collection is ready!
-									elseif($_GET["list"] == 1 && $_GET["user"] == 1){
-										echo "<h2 style='color:red'>HEY! NO PEEKING!<br>You'll have to wait for the big unveiling! :P</h2>";
 									}
 									else{
 										echo "There are no Transformers that match your criteria. Sorry!";
