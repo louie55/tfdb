@@ -120,6 +120,20 @@ if(!function_exists("createDropdown")){ //Only include these if this is being ca
 											//mail($to, $subject, $message, $headers);
 										}
 										
+										//Set Session variable
+										$_SESSION["user"] = $_POST["user"];
+										//Set Cookie. Expires in 30 Days.
+										?>
+										
+										<script type="text/javascript">
+											var now = new Date();
+											var time = now.getTime();
+											time += 2592000;
+											now.setTime(time);
+											document.cookie = 'user=<?php echo $_POST["user"] ?>; expires=' + now.toUTCString();
+										</script>
+										<?
+										
 										break;
 									
 									case "edit":
