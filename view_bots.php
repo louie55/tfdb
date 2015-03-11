@@ -640,7 +640,7 @@ session_start();
 																									
 													?>	
 													
-															<a rel="lightbox-<?php echo $bot->id; ?>" title="<?php echo $bot->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $bot->series); ?>)" href="images/tf/<?php echo $bot->image[$i]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $bot->image[$i]; ?>"></a><br>
+															<a rel="lightbox-<?php echo $bot->id; ?>" title="<?php echo $bot->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $bot->series); ?>)" href="images/tf/<?php echo $bot->image[0]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $bot->image[0]; ?>"></a><br>
 															
 															<?php
 															if($imgCount > 1){
