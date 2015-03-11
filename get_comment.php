@@ -15,7 +15,9 @@ if(isset($_GET["id"])){
 								$id = $_GET["id"];
 							}
 							
-							echo $db->get_var("SELECT comment FROM tfdb_comments WHERE id = ".$id);
+							$text = $db->get_var("SELECT comment FROM tfdb_comments WHERE id = ".$id);
+							
+							echo stripslashes($text);
 							
 		
 								
