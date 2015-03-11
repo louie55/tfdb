@@ -19,7 +19,7 @@
 	<script>
 		//Convert all "title" text into fancy tooltips
 		$(function() {
-			$( document ).tooltip();
+			//$( document ).tooltip();
 		});
 		
 		//Jquery Plugin for inserting emoticons at the current cursor position

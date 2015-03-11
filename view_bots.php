@@ -105,10 +105,10 @@ session_start();
 		 
 	</script>
 	
-	<script src="images/lightbox/js/lightbox.min.js"></script>
-
-	<link href="images/lightbox/css/lightbox.css" rel="stylesheet" />
+	<script type="text/javascript" src="images/slimbox/js/slimbox2.js"></script>
+	<link rel="stylesheet" href="images/slimbox/css/slimbox2.css" type="text/css" media="screen" />
 	
+		
 </head>
 <body>
 	<?php 
@@ -318,7 +318,7 @@ session_start();
 										<h3 style="color:red">Currently Displaying a Single Bot</h3>
 										
 										To get the direct link, either copy the address of this page in your browser or copy this URL:<br>
-										<span class="bold">/view_bots.php?bot=<?php echo $_GET["bot"]; ?></span><br><br>
+										<span class="bold"><?php echo "http://".$_SERVER["SERVER_NAME"]; ?>/view_bots.php?bot=<?php echo $_GET["bot"]; ?></span><br><br>
 										<?php
 										
 									}
@@ -600,7 +600,9 @@ session_start();
 														echo "<img title=\"Copy to ".$db->get_var("SELECT name FROM tfdb_users WHERE id = ".$oppositeOwner)."'s Wishlist!\" src=\"images/heart.png\" onclick=\"toWishlist('".$bot->id."','".$bot->name."');\"> ";
 														echo "<img title=\"Edit This Bot\" src=\"images/edit.png\" onclick=\"editBot(".$bot->id.");\"> ";
 														echo "<img title=\"Delete This Bot\" src=\"images/delete.png?y=34\" onclick=\"confirmDelete('".$bot->name." (". getVar("tfdb_series", "abbreviation", $bot->series) .")',".$bot->id.");\"> ";
-														echo "<img title=\"Get Direct Link To This Bot\" src=\"images/link.png\" onclick=\"location.href='view_bots.php?bot=".$bot->id."';\"> ";
+														if(!isset($_GET["bot"])){//Don't show the direct link button if we are already at a direct link!
+															echo "<img title=\"Get Direct Link To This Bot\" src=\"images/link.png\" onclick=\"location.href='view_bots.php?bot=".$bot->id."&user=".$_GET["user"]."&list=".$_GET["list"]."';\"> ";
+														}
 														
 													echo "</td>\n";
 												echo "</tr>\n";
@@ -625,34 +627,45 @@ session_start();
 											
 											
 											<!--Print Thumbnail Image-->
-											<div class="bot_thumbnail_image_div">
+											<div class="bot_thumbnail_image_div" id="bot_photos_div_<?php echo $bot->id; ?>">
 												<?php
 												//Unserialize the image array from the database
 												$bot->image = unserialize($bot->image);
+												$imgCount = count($bot->image);
 												
-												if(count($bot->image) > 0){ 
-													//Loop through the array and show each image. Make the first image larger than the others and on top of them
-													for($i = 0; $i < count($bot->image); $i++){
+												if($imgCount > 0){ 
 													
-														if($i == 0){
 															
 														
 																									
 													?>	
 													
-															<a data-lightbox="image<?php echo $bot->id; ?>" data-title="<?php echo $bot->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $bot->series); ?>)" href="images/tf/<?php echo $bot->image[$i]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $bot->image[$i]; ?>"></a><br>
-														
-												<?php
-														} //End if $i == 0
-														else{?>
-															<a data-lightbox="image<?php echo $bot->id; ?>" data-title="<?php echo $bot->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $bot->series); ?>)" href="images/tf/<?php echo $bot->image[$i]; ?>" target="_blank"><img class="image_thumb smaller_thumb" src="images/tf/thumbs/<?php echo $bot->image[$i]; ?>"></a>
-														<?php
-															//Only show 5 thumbnails per line
-															if( $i % 5 == 0 ){
-																echo "<br>\n";
+															<a rel="lightbox-<?php echo $bot->id; ?>" title="<?php echo $bot->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $bot->series); ?>)" href="images/tf/<?php echo $bot->image[$i]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $bot->image[$i]; ?>"></a><br>
+															
+															<?php
+															if($imgCount > 1){
+																$imgsLeft = $imgCount-1;
+																?>
+																<br>
+																<?php
+																if($imgCount > 2){
+																	echo "There are ". $imgsLeft ." more photos";
+																}
+																else{
+																	echo "There is ". $imgsLeft ." more photo";
+																}
+																?>
+																<br>															
+																
+																<input type="button" value="Load All Photos" onclick="loadPhotos(<?php echo $bot->id; ?>)">
+																<?php
 															}
-														} //End else
-													} //End for loop
+															?>
+															
+															
+														
+												
+													<?php
 												} //End if count bot image > 0
 												else { //There is no image for this bot ?>
 													<img src="images/image_preview_placeholder.png">																									
@@ -1247,6 +1260,17 @@ session_start();
 						 	}
 						 	return true;
 						 });
+						 
+						 
+						 //Load all photos for a bot via AJAX
+						 function loadPhotos(i){
+							var div = $("#bot_photos_div_" + i);
+							
+							$.get("load_images.php",{id: i}).done(function(data){
+								div.html(data); //Show all images
+								jQuery("#bot_photos_div_" + i + " a").slimbox(); //Reset Slimbox on the new images
+							});
+						 }
 		
 	</script>
 	

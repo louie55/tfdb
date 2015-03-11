@@ -130,9 +130,9 @@ if(!function_exists("createDropdown")){ //Only include these if this is being ca
 											var time = now.getTime();
 											time += 2592000;
 											now.setTime(time);
-											document.cookie = 'user=<?php echo $_POST["user"] ?>; expires=' + now.toUTCString();
+											document.cookie = 'user=<?php echo $_POST["user"]; ?>; expires=' + now.toUTCString();
 										</script>
-										<?
+										<?php
 										
 										break;
 									
