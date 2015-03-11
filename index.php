@@ -183,7 +183,10 @@
 								httpRequest2.onreadystatechange = function(){
 									if (httpRequest2.readyState === 4) {
 								      if (httpRequest2.status === 200) {
-								        field.html("<textarea rows=\"4\" cols=\"45\" id=\"editing_"+id+"\">"+httpRequest2.responseText+"</textarea>");	
+								        field.html("<textarea rows=\"4\" cols=\"65\" id=\"editing_"+id+"\">"+httpRequest2.responseText+"</textarea>");	
+										
+										//Make the textarea autosizing
+										autosize($("#editing_"+id));
 								        
 								        //Insert Save Button and emoticon button
 										field.after("<input type='button' value='Save' id='save_edit'> <img src='images/emoticon.png' title='Add Emoticons! (Or you can use text emoticons and they will be automatically converted :D )' id='emoticon_image_add' onclick='openEmoticons(\"#editing_"+id+"\");'>");

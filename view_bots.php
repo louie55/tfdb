@@ -656,8 +656,7 @@ session_start();
 																}
 																?>
 																<br>															
-																
-																<input type="button" value="Load All Photos" onclick="loadPhotos(<?php echo $bot->id; ?>)">
+																<div class="button" onclick="loadPhotos(<?php echo $bot->id; ?>)">Load All Photos</div>
 																<?php
 															}
 															?>
@@ -1073,8 +1072,11 @@ session_start();
 								httpRequest2.onreadystatechange = function(){
 									if (httpRequest2.readyState === 4) {
 								      if (httpRequest2.status === 200) {
-								        field.html("<textarea rows=\"4\" cols=\"45\" id=\"editing_"+id+"\">"+httpRequest2.responseText+"</textarea>");	
+								        field.html("<textarea rows=\"4\" cols=\"55\" id=\"editing_"+id+"\">"+httpRequest2.responseText+"</textarea>");	
 								        
+										//Auto size textarea
+										autosize($("#editing_"+id));
+										
 								        //Insert Save Button and emoticon button
 										field.after("<input type='button' value='Save' id='save_edit'> <img src='images/emoticon.png' title='Add Emoticons! (Or you can use text emoticons and they will be automatically converted :D )' id='emoticon_image_add' onclick='openEmoticons(\""+id+"\",\"edit\");'>");
 

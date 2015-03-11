@@ -164,7 +164,10 @@ if(isset($_GET["id"])){
 								<input type="button" value="Add Comment" onclick="addComment('<?php echo $id ?>')">
 								<img src="images/emoticon.png" title="Add Emoticons! (Or you can use text emoticons and they will be automatically converted :D )" id="emoticon_image_add" onclick="openEmoticons('<?php echo $id ?>','add');">
 							</div>
+							<script type="text/javascript">autosize($("#text_<?php echo $id; ?>")); //Auto-Size textarea</script>
 						</div>
+						
+						
 							<?php
 							
 		
