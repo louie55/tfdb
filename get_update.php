@@ -15,7 +15,7 @@ if(isset($_GET["id"])){
 							
 							$text = $db->get_var("SELECT text FROM tfdb_updates WHERE id = ".$id);
 							
-							echo stripslashes(text);
+							echo stripslashes($text);
 							
 							
 		
