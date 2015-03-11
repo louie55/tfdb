@@ -48,7 +48,7 @@ if(!function_exists("createDropdown")){ //Only include these if this is being ca
 								
 								//Send Louis a Message if Cindy Posts an Update
 								
-								if($who != 1){ //If Louis didn't post an update
+								if($who != 1 && strpos($__SERVER["SERVER_NAME"],"robotsindisguise") !== false){ //If Louis didn't post an update
 									$to      = 'lchanady@gmail.com';
 									$subject = 'Cindy Posted an Update!';
 									$message = "Cindy has a new update!\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com";
@@ -60,14 +60,14 @@ if(!function_exists("createDropdown")){ //Only include these if this is being ca
 								
 								//Send Cindy a Message if Louis Posts an Update
 								
-								if($who != 2){ //If Cindy didn't post an update
-									//$to      = 'cynthiachanady5@gmail.com';
+								if($who != 2 && strpos($__SERVER["SERVER_NAME"],"robotsindisguise") !== false){ //If Cindy didn't post an update
+									$to      = 'cynthiachanady5@gmail.com';
 									$subject = 'Louis Posted an Update!';
 									$message = "Louis has a new update!\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com";
 									$headers = 'From: Vector Sigma <vector_sigma@cybertrons-core.com>' . "\r\n" .
 									    	    'X-Mailer: PHP/' . phpversion();
 									
-									//mail($to, $subject, $message, $headers);
+									mail($to, $subject, $message, $headers);
 								}
 
 								
