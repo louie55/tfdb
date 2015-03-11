@@ -65,7 +65,7 @@ if(isset($_GET["id"])){
 								
 								//Send Louis a Message if Cindy comments
 								
-								if($who != 1 && strpos($__SERVER["SERVER_NAME"],"robotsindisguise") !== false){ //If Louis didn't comment
+								if($who != 1 && strpos($_SERVER["SERVER_NAME"],"robotsindisguise") !== false){ //If Louis didn't comment
 									$to      = 'lchanady@gmail.com';
 									$subject = 'Cindy Commented on ' .$botName. '!';
 									$message = "Cindy has left a comment on the following bot: ".$botName."\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com/view_bots.php?bot=".$id."&user=".$_GET["user"]."&list=".$_GET["list"];
@@ -77,7 +77,7 @@ if(isset($_GET["id"])){
 								
 								//Send Cindy a Message if Louis comments
 								
-								if($who != 2 && strpos($__SERVER["SERVER_NAME"],"robotsindisguise") !== false){ //If Cindy didn't comment
+								if($who != 2 && strpos($_SERVER["SERVER_NAME"],"robotsindisguise") !== false){ //If Cindy didn't comment
 									$to      = 'cynthiachanady5@gmail.com';
 									$subject = 'Louis Commented on ' .$botName. '!';
 									$message = "Louis has left a comment on the following bot: ".$botName."\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com/view_bots.php?bot=".$id."&user=".$_GET["user"]."&list=".$_GET["list"];;
