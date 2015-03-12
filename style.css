@@ -921,3 +921,32 @@ textarea:focus {
 	right: 5px;
 	cursor: pointer;
 }
+
+.comment_balloon {
+	display: inline-block;
+	width: 41px;
+	height: 30px;
+	margin-left: 25px;
+	position: relative;
+	padding: 0;
+}
+
+.comment_balloon img{
+	vertical-align: middle;	
+}
+
+.comment_count {
+	position: absolute;
+	height: 30px;
+	width: 41px;
+	left: 0;
+	top:0;
+	text-align: center;
+	margin-top: 1px;
+	display: inline-block;
+	font-size: 18px;
+	color: #000;
+	font-weight: bold;
+	font-family: Arial,sans-serif;
+
+}

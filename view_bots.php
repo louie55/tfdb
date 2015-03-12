@@ -257,6 +257,12 @@ session_start();
 											<input type="hidden" name="filter" value="1">
 											<input type="hidden" name="user" value="<?php echo $_GET["user"]; ?>">
 											<input type="hidden" name="list" value="<?php echo $_GET["list"]; ?>">
+											
+											
+											<input type="checkbox" value="1" name="comments"<?php if(isset($_GET["comments"]) && $_GET["comments"] == 1){echo " checked";}?>> <span<?php if(isset($_GET["comments"]) && $_GET["comments"] == 1){echo " class=\"selected_filter\"";}?>>Only Show Bots/Items With Comments?</span>
+											<br>
+											<br>
+											
 											<input type="submit" value="Filter Bots!"> <input type="button" value="Show All Bots" onclick="location.href='view_bots.php?user=<?php echo $_GET["user"]; ?>&list=<?php echo $_GET["list"]; if(isset($_GET["sort"])){echo "&s=1&sort=".$_GET["sort"];}?>'">
 											</form>
 										</div>
@@ -536,7 +542,16 @@ session_start();
 										if($bot->part_of_combiner){
 											$botCount++;
 											continue;
-										}	
+										}
+
+										$commentCount = $db->get_var("SELECT COUNT(*) FROM tfdb_comments WHERE type = 'bot' AND bot = ".$bot->id);
+										
+										//Don't show bots/items without comments if the user chose to only show items with comments
+										if(isset($_GET["comments"]) && $_GET["comments"] == 1){
+											if($commentCount < 1){
+												continue; //Skip this item because it has no comments
+											}
+										}
 										
 										//Here's some code to create the anchor for the bottom bot.
 										//Keep in mind that this isn't perfect. This code assumes that the last bot in the array is NOT part of a combiner.
@@ -587,6 +602,20 @@ session_start();
 														//Print a combiner notice if this is a combiner
 														if($bot->is_combiner){
 															echo " &nbsp;&nbsp;{Combiner}\n";
+														}
+														
+														//Add the comment count if this bot has comments
+																												
+														if($commentCount > 0){ //Display comment balloon with count in it
+														?>
+															
+																<div class="comment_balloon">
+																	<img src="images/comment.png">
+																	<div class="comment_count" title="This item has <?php echo $commentCount ." comment"; echo $commentCount > 1 ? "s" : ""; ?>"><?php echo $commentCount; ?></div>
+																</div>
+															
+														<?php
+															
 														}
 														
 													echo "</td>\n";
@@ -658,6 +687,9 @@ session_start();
 																<br>															
 																<div class="button" onclick="loadPhotos(<?php echo $bot->id; ?>)">Load All Photos</div>
 																<?php
+															}
+															else{
+																echo "There are no more photos";
 															}
 															?>
 															
