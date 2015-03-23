@@ -110,7 +110,7 @@ function createFilterList($table, $field, $field2, $name, $checked, $user, $list
 	$whichOnes = $db->get_results("SELECT DISTINCT(".$field2.") AS id FROM tfdb_bots WHERE part_of_combiner < 1 AND owner = ".$user." AND list = ".$list);
 	
 		
-	$list = "";
+	$finishedList = "";
 	
 	//If there are any, create the list
 	if($db->num_rows > 0){
@@ -133,11 +133,14 @@ function createFilterList($table, $field, $field2, $name, $checked, $user, $list
 		
 		//Make text red and bold if it's checked
 		$styleText = $checkedText != ""	? "<span class=\"selected_filter\">Show All</span>" : "Show All";
-		$list .= "<input type=\"radio\" name=\"".$name."\" value=\"0\"".$checkedText."> ".$styleText."<br>\n";
+		$finishedList .= "<input type=\"radio\" name=\"".$name."\" value=\"0\"".$checkedText."> ".$styleText."<br>\n";
 		
 				
 		foreach($sortedArray as $w){
-			if($w < 1){continue;} //Don't print zeroes
+			if($w < 1){continue;} //Don't print zero ID
+			
+			//Get a count of how many of these exist in the current list
+			$count = $db->get_var("SELECT COUNT(*) FROM tfdb_bots WHERE part_of_combiner < 1 AND owner = ".$user." AND list = ".$list." AND ".$field2." = ".$w);
 			
 			$checkedText = $checked == $w ? " checked" : "";
 			$n = $db->get_var("SELECT ".$field." FROM ".$table." WHERE id = ".$w);	
@@ -145,11 +148,11 @@ function createFilterList($table, $field, $field2, $name, $checked, $user, $list
 			//Make text red and bold if it's checked
 			$styleText = $checkedText != ""	? "<span class=\"selected_filter\">".$n."</span>" : $n;
 				
-			$list .= "<input type=\"radio\" name=\"".$name."\" value=\"".$w."\"".$checkedText."> ".$styleText."<br>\n";
+			$finishedList .= "<input type=\"radio\" name=\"".$name."\" value=\"".$w."\"".$checkedText."> ".$styleText." <span class=\"filter_category_count\">(".$count.")</span><br>\n";
 		}
 	}
 	
-	return $list;
+	return $finishedList;
 }
 
 

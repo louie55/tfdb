@@ -425,6 +425,7 @@ td.bot_data_label {
 }
 
 #filter_table {
+	width: 95%;
 	border: 1px solid gray;
 	text-align: left;
 	color: black;
@@ -451,6 +452,11 @@ td.bot_data_label {
 .selected_filter {
 	color: red;
 	font-weight: bold;
+}
+
+.filter_category_count {
+	font-size: 12px;
+	color: #8C8C8C;
 }
 
 #edit_attribute_list {
@@ -769,7 +775,7 @@ td.bot_data_label {
 
 #filter_div {
 	border: 1px dashed black;
-	width: 70%;
+	width: 90%;
 	margin: 0 auto;
 	padding-bottom: 20px;
 	
