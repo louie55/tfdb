@@ -487,9 +487,21 @@ session_start();
 													</h3>
 												<?php	
 											}
+											
+											//Get a proper count of the bots in the list
+											$listCount = 0; //Won't include combiner members
+											$combinerMemberCount = 0;
+											foreach($results as $r){
+												if($r->part_of_combiner == 0){
+													$listCount++;
+												}
+												else{
+													$combinerMemberCount++;
+												}
+											}
 											?>
 											
-											<h3 style="color:green">There<?php echo count($results) > 1 ? " are ".count($results)." items that match " : " is 1 item that matches "; ?>the criteria in this list</h3>
+											<h3 style="color:green">There<?php echo $listCount > 1 ? " are ".$listCount." items that match " : " is 1 item that matches "; ?>the criteria in this list<?php if($combinerMemberCount > 0){echo " (Plus ".$combinerMemberCount." Combiner Member"; echo $combinerMemberCount > 1 ? "s)" : ")";} ?></h3>
 											<br>
 											<?php
 												if(isset($_GET["datefrom"]) && $_GET["datefrom"] != ""){
