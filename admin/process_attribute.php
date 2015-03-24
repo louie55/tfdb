@@ -26,7 +26,7 @@ require("common/functions.php");
 			//Now simply save the changes in the DB
 			
 			//Clean up data
-			$data = trim(urldecode($_GET["data"]));
+			$data = trim(urldecode(htmlspecialchars($_GET["data"])));
 			
 			//Get id and column
 			$arr = explode("_",$_GET["id"]);

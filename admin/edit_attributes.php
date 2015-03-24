@@ -293,7 +293,7 @@
 							
 							//Show the save button
 							$("#action_button").on("click",function(){
-								var content = $("#currentEdit").val();
+								var content = encodeURIComponent($("#currentEdit").val());
 								//Make sure the field isn't empty
 								if(content == ""){
 									alert("You must enter a value!");
@@ -303,7 +303,7 @@
 								
 								
 								field.empty();
-								field.html(content);
+								field.html(decodeURIComponent(content));
 								
 								//Do the actual saving
 								httpRequest = new XMLHttpRequest();
