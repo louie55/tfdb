@@ -499,10 +499,23 @@ session_start();
 													$combinerMemberCount++;
 												}
 											}
+											
+											//Get a count of photos available in the list
+											$photoCount = 0;
+											foreach($results as $r){
+												$iA = unserialize($r->image);
+												$photoCount += count($iA);
+											}
 											?>
 											
-											<h3 style="color:green">There<?php echo $listCount > 1 ? " are ".$listCount." items that match " : " is 1 item that matches "; ?>the criteria in this list<?php if($combinerMemberCount > 0){echo " (Plus ".$combinerMemberCount." Combiner Member"; echo $combinerMemberCount > 1 ? "s)" : ")";} ?></h3>
+											<h3 style="color:green">
+												There<?php echo $listCount > 1 ? " are ".$listCount." items that match " : " is 1 item that matches "; ?>the criteria in this list<?php if($combinerMemberCount > 0){echo " (Plus ".$combinerMemberCount." Combiner Member"; echo $combinerMemberCount > 1 ? "s)" : ")";} ?>
+												<br>
+												<span style="color:#8600B3">With a total of <?php echo $photoCount." Photo"; echo $photoCount == 1 ? "" : "s"; ?></span>
+											</h3>
 											<br>
+											
+											
 											<?php
 												if(isset($_GET["datefrom"]) && $_GET["datefrom"] != ""){
 													if($_GET["datefrom"] == $_GET["dateto"]){	
