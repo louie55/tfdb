@@ -723,7 +723,7 @@ session_start();
 													?>
 													
 													<div class="bot_description">
-														<?php echo str_replace(array("\n"),"<br>",$bot->comments); ?>
+														<?php echo nl2br(formatUrlsInText($bot->comments)); ?>
 													</div>
 													
 													<?php
@@ -908,7 +908,7 @@ session_start();
 																			?>
 																			
 																			<div class="bot_description">
-																				<?php echo str_replace(array("\n"),"<br>",$m->comments); ?>
+																				<?php echo nl2br(formatUrlsInText($m->comments)); ?>
 																			</div>
 																			
 																			<?php

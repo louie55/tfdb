@@ -388,6 +388,10 @@ td.bot_data_label {
 	line-height: 25px;
 }
 
+.bot_description a {
+	color: #007FFF !important;
+}
+
 #edit_images_container {
 	margin: 20px auto 0 auto;
 	width: 80%;
