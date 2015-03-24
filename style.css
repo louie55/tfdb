@@ -117,6 +117,12 @@ html, body {
 	background-color: #1975B3;
 }
 
+.navbutton a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
 .navbutton a:link {
 	color: #FFFFFF;
 	text-decoration: none;
