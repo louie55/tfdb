@@ -513,6 +513,28 @@ session_start();
 												<br>
 												<span style="color:#8600B3">With a total of <?php echo $photoCount." Photo"; echo $photoCount == 1 ? "" : "s"; ?></span>
 											</h3>
+											<?php
+												//Display the download all photos button if the number of photos isn't too high
+												
+												//First set the photo limit
+												$photo_limit = 150;
+												
+												if($photoCount <= $photo_limit && $photoCount > 0){
+													//Create an array containing every ID that we need to get photos for
+													$allIDsArray = array();
+													foreach($results as $bot){
+														if($bot->part_of_combiner == 0){ //Don't include combiner members
+															$allIDsArray[] = $bot->id;
+														}
+													}
+													
+													//Display the button
+													?>
+													<br>
+													<a href="get_photos.php?all=<?php echo base64_encode(serialize($allIDsArray)); ?>"><img title="Download Every Bot/Item Photo on This Page in a ZIP file" src="images/download_all_photos_button.png"></a>
+													<?php
+												}
+											?>
 											<br>
 											
 											
@@ -653,6 +675,7 @@ session_start();
 														$oppositeOwner = $bot->owner == 1 ? 2 : 1;
 														echo "<img title=\"Copy to ".$db->get_var("SELECT name FROM tfdb_users WHERE id = ".$oppositeOwner)."'s Wishlist!\" src=\"images/heart.png\" onclick=\"toWishlist('".$bot->id."','".$bot->name."');\"> ";
 														echo "<img title=\"Edit This Bot\" src=\"images/edit.png\" onclick=\"editBot(".$bot->id.");\"> ";
+														echo "<img title=\"Download All of the Photos of This Bot or Item in a ZIP File\" src=\"images/download_photos_button.png\" onclick=\"getPhotos(".$bot->id.")\">";
 														echo "<img title=\"Delete This Bot\" src=\"images/delete.png?y=34\" onclick=\"confirmDelete('".$bot->name." (". getVar("tfdb_series", "abbreviation", $bot->series) .")',".$bot->id.");\"> ";
 														if(!isset($_GET["bot"])){//Don't show the direct link button if we are already at a direct link!
 															echo "<img title=\"Get Direct Link To This Bot\" src=\"images/link.png\" onclick=\"location.href='view_bots.php?bot=".$bot->id."&user=".$_GET["user"]."&list=".$_GET["list"]."';\"> ";
@@ -865,7 +888,9 @@ session_start();
 																		echo "<td class=\"accordion_header_right\">\n"; //Create right DIV
 																			
 																			echo "<img title=\"Edit This Bot\" src=\"images/edit_small.png\" onclick=\"editBot(".$m->id.");\"> ";
+																			echo "<img title=\"Download All of the Photos of This Bot or Item in a ZIP File\" src=\"images/download_photos_button_small.png\" onclick=\"getPhotos(".$m->id.")\">";
 																			echo "<img title=\"Delete This Bot\" src=\"images/delete_small.png\" onclick=\"confirmDelete('".$m->name." (". getVar("tfdb_series", "abbreviation", $m->series) .")',".$m->id.");\"> ";
+																			
 																			
 																		echo "</td>\n";
 																	echo "</tr>\n";
@@ -894,12 +919,12 @@ session_start();
 																															
 																			?>	
 																			
-																					<a data-lightbox="image<?php echo $m->id; ?>" data-title="<?php echo $m->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $m->series); ?>)" href="images/tf/<?php echo $m->image[$i]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $m->image[$i]; ?>"></a><br>
+																					<a rel="lightbox-<?php echo $m->id; ?>" title="<?php echo $m->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $m->series); ?>)" href="images/tf/<?php echo $m->image[$i]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $m->image[$i]; ?>"></a><br>
 																				
 																		<?php
 																				} //End if $i == 0
 																				else{?>
-																					<a data-lightbox="image<?php echo $m->id; ?>" data-title="<?php echo $m->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $m->series); ?>)" href="images/tf/<?php echo $m->image[$i]; ?>" target="_blank"><img class="image_thumb smaller_thumb" src="images/tf/thumbs/<?php echo $m->image[$i]; ?>"></a>
+																					<a rel="lightbox-<?php echo $m->id; ?>" title="<?php echo $m->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $m->series); ?>)" href="images/tf/<?php echo $m->image[$i]; ?>" target="_blank"><img class="image_thumb smaller_thumb" src="images/tf/thumbs/<?php echo $m->image[$i]; ?>"></a>
 																				<?php
 																					//Only show 5 thumbnails per line
 																					if( $i % 5 == 0 ){
@@ -1067,7 +1092,9 @@ session_start();
 						    return "";
 						}
 						
-						
+						function getPhotos(id){
+							location.href="get_photos.php?id="+id;
+						}
 						
 						//Function to add a comment
 						function addComment(id){
