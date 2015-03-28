@@ -736,7 +736,7 @@ session_start();
 																									
 													?>	
 													
-															<a rel="lightbox-<?php echo $bot->id; ?>" title="<?php echo $bot->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $bot->series); ?>)" href="images/tf/<?php echo $bot->image[0]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $bot->image[0]; ?>"></a><br>
+															<a rel="lightbox-<?php echo $bot->id; ?>" title="<?php echo $bot->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $bot->series); ?>)" href="images/tf/<?php echo $botImages[0]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $botImages[0]; ?>"></a><br>
 															
 															<?php
 															if($imgCount > 1){
@@ -886,6 +886,9 @@ session_start();
 														foreach($members as $m){
 															//Exit PHP Mode for easier HTML
 															
+																//Get image count
+																$tempArr = unserialize($m->image);
+																$imgCount = count($tempArr);
 															
 																															
 																echo "	<h3 class=\"accordion_header\">\n";
@@ -907,7 +910,14 @@ session_start();
 																		echo "<td class=\"accordion_header_right\">\n"; //Create right DIV
 																			
 																			echo "<img title=\"Edit This Bot\" src=\"images/edit_small.png\" onclick=\"editBot(".$m->id.");\"> ";
-																			echo "<img title=\"Download All of the Photos of This Bot or Item in a ZIP File\" src=\"images/download_photos_button_small.png\" onclick=\"getPhotos(".$m->id.")\">";
+																			if($imgCount > 0){
+																				if($imgCount > 1){
+																					echo "<img title=\"Download All ".$imgCount." Photos of This Bot or Item in a ZIP File\" src=\"images/download_photos_button.png\" onclick=\"getPhotos(".$m->id.")\">";
+																				}
+																				else{
+																					echo "<img title=\"Download the Photo of This Bot or Item in a ZIP File\" src=\"images/download_photos_button.png\" onclick=\"getPhotos(".$m->id.")\">";
+																				}
+																			}
 																			echo "<img title=\"Delete This Bot\" src=\"images/delete_small.png\" onclick=\"confirmDelete('".$m->name." (". getVar("tfdb_series", "abbreviation", $m->series) .")',".$m->id.");\"> ";
 																			
 																			
