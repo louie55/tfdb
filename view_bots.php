@@ -621,6 +621,9 @@ session_start();
 										}	
 										
 										
+										//Unserialize the image array from the database and get a photo count
+										$tempArr = unserialize($bot->image);
+										$imgCount = count($tempArr);
 										
 										echo "	<h3 class=\"accordion_header\"".$h3id.">\n";
 										
@@ -685,7 +688,15 @@ session_start();
 														$oppositeOwner = $bot->owner == 1 ? 2 : 1;
 														echo "<img title=\"Copy to ".$db->get_var("SELECT name FROM tfdb_users WHERE id = ".$oppositeOwner)."'s Wishlist!\" src=\"images/heart.png\" onclick=\"toWishlist('".$bot->id."','".$bot->name."');\"> ";
 														echo "<img title=\"Edit This Bot\" src=\"images/edit.png\" onclick=\"editBot(".$bot->id.");\"> ";
-														echo "<img title=\"Download All of the Photos of This Bot or Item in a ZIP File\" src=\"images/download_photos_button.png\" onclick=\"getPhotos(".$bot->id.")\">";
+														if($imgCount > 0){
+															if($imgCount > 1){
+																echo "<img title=\"Download All ".$imgCount." Photos of This Bot or Item in a ZIP File\" src=\"images/download_photos_button.png\" onclick=\"getPhotos(".$bot->id.")\">";
+															}
+															else{
+																echo "<img title=\"Download the Photo of This Bot or Item in a ZIP File\" src=\"images/download_photos_button.png\" onclick=\"getPhotos(".$bot->id.")\">";
+															}
+														}
+														
 														echo "<img title=\"Delete This Bot\" src=\"images/delete.png?y=34\" onclick=\"confirmDelete('".$bot->name." (". getVar("tfdb_series", "abbreviation", $bot->series) .")',".$bot->id.");\"> ";
 														if(!isset($_GET["bot"])){//Don't show the direct link button if we are already at a direct link!
 															echo "<img title=\"Get Direct Link To This Bot\" src=\"images/link.png\" onclick=\"location.href='view_bots.php?bot=".$bot->id."&user=".$_GET["user"]."&list=".$_GET["list"]."';\"> ";
@@ -716,9 +727,7 @@ session_start();
 											<!--Print Thumbnail Image-->
 											<div class="bot_thumbnail_image_div" id="bot_photos_div_<?php echo $bot->id; ?>">
 												<?php
-												//Unserialize the image array from the database
-												$bot->image = unserialize($bot->image);
-												$imgCount = count($bot->image);
+												
 												
 												if($imgCount > 0){ 
 													
