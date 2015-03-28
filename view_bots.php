@@ -912,34 +912,47 @@ session_start();
 																<div>
 																	
 																	<!--Print Thumbnail Image-->
-																	<div class="bot_thumbnail_image_div">
+																	<div class="bot_thumbnail_image_div" id="bot_photos_div_<?php echo $m->id; ?>">
 																		<?php
 																		//Unserialize the image array from the database
 																		$m->image = unserialize($m->image);
+																		$imgCount = count($m->image);
 																		
-																		if(count($m->image) > 0){ 
-																			//Loop through the array and show each image. Make the first image larger than the others and on top of them
-																			for($i = 0; $i < count($m->image); $i++){
+																		if($imgCount > 0){ 
 																			
-																				if($i == 0){
 																					
 																				
 																															
 																			?>	
 																			
-																					<a rel="lightbox-<?php echo $m->id; ?>" title="<?php echo $m->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $m->series); ?>)" href="images/tf/<?php echo $m->image[$i]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $m->image[$i]; ?>"></a><br>
-																				
-																		<?php
-																				} //End if $i == 0
-																				else{?>
-																					<a rel="lightbox-<?php echo $m->id; ?>" title="<?php echo $m->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $m->series); ?>)" href="images/tf/<?php echo $m->image[$i]; ?>" target="_blank"><img class="image_thumb smaller_thumb" src="images/tf/thumbs/<?php echo $m->image[$i]; ?>"></a>
-																				<?php
-																					//Only show 5 thumbnails per line
-																					if( $i % 5 == 0 ){
-																						echo "<br>\n";
+																					<a rel="lightbox-<?php echo $m->id; ?>" title="<?php echo $m->name; ?> (<?php echo getVar("tfdb_series", "abbreviation", $m->series); ?>)" href="images/tf/<?php echo $m->image[0]; ?>" target="_blank"><img class="image_thumb main_thumb" src="images/tf/thumbs/<?php echo $m->image[0]; ?>"></a><br>
+																					
+																					<?php
+																					if($imgCount > 1){
+																						$imgsLeft = $imgCount-1;
+																						?>
+																						<br>
+																						<?php
+																						if($imgCount > 2){
+																							echo "There are ". $imgsLeft ." more photos";
+																						}
+																						else{
+																							echo "There is ". $imgsLeft ." more photo";
+																						}
+																						?>
+																						<br>															
+																						<div class="button" onclick="loadPhotos(<?php echo $m->id; ?>)">Load All Photos</div>
+																						<?php
 																					}
-																				} //End else
-																			} //End for loop
+																					else{
+																						echo "There are no more photos";
+																					}
+																					?>
+																					
+																					
+																				
+																		
+																			<?php
 																		} //End if count bot image > 0
 																		else { //There is no image for this bot ?>
 																			<img src="images/image_preview_placeholder.png">																									
