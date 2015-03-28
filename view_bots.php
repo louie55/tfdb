@@ -488,23 +488,31 @@ session_start();
 												<?php	
 											}
 											
-											//Get a proper count of the bots in the list
+											//Get a proper count of the bots and photos in the list
 											$listCount = 0; //Won't include combiner members
 											$combinerMemberCount = 0;
+											$photoCount = 0;
 											foreach($results as $r){
 												if($r->part_of_combiner == 0){
 													$listCount++;
+													
+													//Count Photos for this bot
+													$iA = unserialize($r->image);
+													$photoCount += count($iA);
+													
+													//Now see if this bot has any combiner members
+													if($r->is_combiner > 0){
+														$g = $db->get_results("SELECT image FROM tfdb_bots WHERE part_of_combiner = ".$r->id);
+														if($db->num_rows > 0){ //Then combiner members exist for this bot
+															foreach($g as $cm){
+																$combinerMemberCount++; //Increment Combiner Member Count
+																
+																$cmi = unserialize($cm->image);
+																$photoCount += count($cmi);
+															}
+														}
+													}
 												}
-												else{
-													$combinerMemberCount++;
-												}
-											}
-											
-											//Get a count of photos available in the list
-											$photoCount = 0;
-											foreach($results as $r){
-												$iA = unserialize($r->image);
-												$photoCount += count($iA);
 											}
 											?>
 											
