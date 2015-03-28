@@ -2,6 +2,15 @@
 //THIS FILE WILL CREATE A ZIP FILE OF ALL OF THE PHOTOS OF THE PASSED BOT
 //AND SEND IT BACK TO THE BROWSER AS A FILE TO DOWNLOAD.
 
+//Make sure no file compression happens so that the browser will know the filesize
+//@apache_setenv('no-gzip', 1);
+//@ini_set('zlib.output_compression', 0);
+
+//Delete old ZIP file if it exists
+if(file_exists("zip/photos.zip")){
+	unlink("zip/photos.zip");
+}
+
 if(isset($_GET['id'])){ //Only run if this has been called with a bot ID
 
 	//Get the bot id
@@ -47,7 +56,7 @@ if(isset($_GET['id'])){ //Only run if this has been called with a bot ID
 		$zip = new ZipArchive();
 		$filename = "zip/photos.zip";
 
-		if ($zip->open($filename, ZipArchive::OVERWRITE)!==TRUE) {
+		if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
 			exit("cannot open <$filename>\n");
 		}
 
@@ -120,7 +129,7 @@ elseif(isset($_GET["all"])){
 			$zip = new ZipArchive();
 			$filename = "zip/photos.zip";
 
-			if ($zip->open($filename, ZipArchive::OVERWRITE)!==TRUE) {
+			if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
 				exit("cannot open <$filename>\n");
 			}
 

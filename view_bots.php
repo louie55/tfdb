@@ -87,6 +87,7 @@ session_start();
 			$( "#chooseDateFrom" ).datepicker({
 				minDate: new Date("<?php echo $dateMIN; ?>"), 
 				maxDate: new Date("<?php echo $dateMAX; ?>"),
+				numberOfMonths: 2,
 				onClose: function( selectedDate ) {
 					$( "#chooseDateTo" ).datepicker( "option", "minDate", selectedDate );
 				} 
@@ -95,6 +96,7 @@ session_start();
 			$( "#chooseDateTo" ).datepicker({
 				minDate: new Date("<?php echo $dateMIN; ?>"), 
 				maxDate: new Date("<?php echo $dateMAX; ?>"),
+				numberOfMonths: 2,
 				onClose: function( selectedDate ) {
 					$( "#chooseDateFrom" ).datepicker( "option", "maxDate", selectedDate );
 				} 
