@@ -61,7 +61,7 @@ if(!function_exists("createDropdown")){ //Only include these if this is being ca
 								//Send Cindy a Message if Louis Posts an Update
 								
 								if($who != 2 && strpos($_SERVER["SERVER_NAME"],"robotsindisguise") !== false){ //If Cindy didn't post an update
-									$to      = 'cynthiachanady5@gmail.com';
+									$to      = 'cynthiachanady5@gmail.com,lchanady@gmail';
 									$subject = 'Louis Posted an Update!';
 									$message = "Louis has a new update!\n\nYou can see it by going to the following link:\n\nhttp://robotsindisguise.grintfarmsupply.com";
 									$headers = 'From: Vector Sigma <vector_sigma@cybertrons-core.com>' . "\r\n" .
